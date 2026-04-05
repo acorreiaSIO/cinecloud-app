@@ -16,12 +16,6 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Range, Authorization');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // Auth — vérifie que la requête vient d'un utilisateur connecté
-  const token = req.headers.authorization?.replace('Bearer ', '');
-  if (!token || !isValidToken(token)) {
-    return res.status(401).json({ error: 'Non autorisé' });
-  }
-
   const { fileId } = req.query;
   if (!fileId) return res.status(400).json({ error: 'fileId manquant' });
 
@@ -86,11 +80,4 @@ export default async function handler(req, res) {
     if (!res.headersSent)
       res.status(500).json({ error: 'Erreur de streaming' });
   }
-}
-
-// Vérifie le token Firebase (simplifié — en prod utilise firebase-admin)
-function isValidToken(token) {
-  // En prod : vérifier le JWT Firebase avec firebase-admin
-  // Pour l'instant on accepte tout token non-vide
-  return token.length > 10;
 }

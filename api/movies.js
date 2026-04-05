@@ -12,9 +12,9 @@ export default async function handler(req, res) {
   );
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const token = req.headers.authorization?.replace('Bearer ', '');
+  const token = req.headers.authorization?.replace("Bearer ", "");
   if (!token || token.length < 10) {
-    return res.status(401).json({ error: 'Non autorisé' });
+  return res.status(401).json({ error: "Non autorisé" });
   }
 
   try {

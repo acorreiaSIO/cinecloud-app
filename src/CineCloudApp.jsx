@@ -1770,14 +1770,8 @@ export default function CineCloud() {
       headers: { Authorization: `Bearer ${user.uid}` },
     })
       .then((r) => r.json())
-      .then((data) => {
-        setMovies(data.movies);
-        setLoading(false);
-      })
-      .catch(() => {
-        setMovies(MOCK_MOVIES);
-        setLoading(false);
-      });
+      .then(data=>{ setMovies(data.movies || MOCK_MOVIES); setLoading(false); })
+      .catch(()=>{ setMovies(MOCK_MOVIES); setLoading(false); });
   }, [user]);
 
   if (!user) return <Login onLogin={setUser} />;

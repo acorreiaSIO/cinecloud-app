@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 // En prod ces appels passent par /api/movies et /api/stream (Vercel)
 // Ici on simule avec des données mock + une vidéo de démo
-const USE_MOCK = true; // passe à false une fois Vercel + Drive configurés
+const USE_MOCK = false; // passe à false une fois Vercel + Drive configurés
 const API_BASE = ''; // ex: "https://ton-projet.vercel.app"
 
 // ─── MOCK DATA ────────────────────────────────────────────────────────────────
